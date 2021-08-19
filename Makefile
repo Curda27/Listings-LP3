@@ -15,6 +15,18 @@ binCap5 = bin/capitulo_5
 listing-5.1: $(srcCap5)/5.1/shm.c
 	mkdir -p $(binCap5)/5.1
 	gcc $(srcCap5)/5.1/shm.c  -o ${binCap5}/5.1/shm
+listing-5.2: $(srcCap5)/5.2/sem_all_deall.c
+	mkdir -p $(binCap5)/5.2
+	gcc $(srcCap5)/5.2/sem_all_deall.c  -o ${binCap5}/5.2/sem_all_deall
+
+listing-5.3: $(srcCap5)/5.3/sem_init.c
+	mkdir -p $(binCap5)/5.3
+	gcc $(srcCap5)/5.3/sem_init.c  -o ${binCap5}/5.3/sem_init
+
+listing-5.4: $(srcCap5)/5.4/sem_pv.c
+	mkdir -p $(binCap5)/5.4
+	gcc $(srcCap5)/5.4/sem_pv.c  -o ${binCap5}/5.4/sem_pv
+
 
 listing-5.5: $(srcCap5)/5.5/mmap-write.c
 	mkdir -p $(binCap5)/5.5

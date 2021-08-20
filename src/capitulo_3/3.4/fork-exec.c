@@ -26,6 +26,7 @@ int spawn(char *program, char **arg_list)
 		abort();
 	}
 }
+
 int main()
 {
 	/* The argument list to pass to the "ls" command. */

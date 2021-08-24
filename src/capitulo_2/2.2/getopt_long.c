@@ -36,6 +36,7 @@ int main (int argc, char* argv[])
     const char* output_filename = NULL;
     /* Whether to display verbose messages. */
     int verbose = 0;
+    int output=0;
     /* Remember the name of the program, to incorporate in messages.
     The name is stored in argv[0]. */
     program_name = argv[0];
@@ -50,6 +51,7 @@ int main (int argc, char* argv[])
             case 'o':   /* -o or --output */
                 /* This option takes an argument, the name of the output file.*/
                 output_filename = optarg;
+                output=1;
                 break;
             case 'v':   /* -v or --verbose */
                 verbose = 1;
@@ -75,7 +77,9 @@ int main (int argc, char* argv[])
         for (i = optind; i < argc; ++i)
         printf ("Argument: %s\n", argv[i]);
     }
+    if (output){
+        printf ("Archivo Generado: %s\n",output_filename);
+    }
     /* The main program goes here.*/
-    //printf("Impresion del main, el programa funciona");
     return 0;
 }

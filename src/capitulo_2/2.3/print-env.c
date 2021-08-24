@@ -6,6 +6,6 @@ int main ()
 {
     char** var;
     for (var = environ; *var != NULL; ++var)
-    printf ("%s\n", *var);
+        printf ("%s\n", *var);
     return 0;
 }

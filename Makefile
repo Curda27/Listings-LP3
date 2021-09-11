@@ -1,13 +1,18 @@
-cap1 = src/capitulo_1
-listing1: $(cap1)/main.c $(cap1)/reciprocal.hpp $(cap1)/reciprocal.cpp
-	mkdir -p bin/capitulo_1
-	gcc $(cap1)/main.c $(cap1)/reciprocal.hpp $(cap1)/reciprocal.cpp -o bin/capitulo_1/reciprocal
+listings := listing-1
+all: $(listings)
+
 clean:
 	@rm -r bin
 
-
-
-
+#Cap1
+srcCap1 := src/capitulo_1
+binCap1 := bin/capitulo_1
+listing-1: $(srcCap1)/main.c $(srcCap1)/reciprocal.hpp $(srcCap1)/reciprocal.cpp
+	mkdir -p $(binCap1)
+	gcc $(srcCap1)/main.c $(srcCap1)/reciprocal.hpp $(srcCap1)/reciprocal.cpp -o bin/capitulo_1/reciprocal
+listing-1.1: listing-1
+listing-1.2: listing-1
+listing-1.3: listing-1
 
 #Cap5
 srcCap5 = src/capitulo_5
@@ -15,6 +20,7 @@ binCap5 = bin/capitulo_5
 listing-5.1: $(srcCap5)/5.1/shm.c
 	mkdir -p $(binCap5)/5.1
 	gcc $(srcCap5)/5.1/shm.c  -o ${binCap5}/5.1/shm
+
 listing-5.2: $(srcCap5)/5.2/sem_all_deall.c
 	mkdir -p $(binCap5)/5.2
 	gcc $(srcCap5)/5.2/sem_all_deall.c  -o ${binCap5}/5.2/sem_all_deall
@@ -26,7 +32,6 @@ listing-5.3: $(srcCap5)/5.3/sem_init.c
 listing-5.4: $(srcCap5)/5.4/sem_pv.c
 	mkdir -p $(binCap5)/5.4
 	gcc $(srcCap5)/5.4/sem_pv.c  -o ${binCap5}/5.4/sem_pv
-
 
 listing-5.5: $(srcCap5)/5.5/mmap-write.c
 	mkdir -p $(binCap5)/5.5

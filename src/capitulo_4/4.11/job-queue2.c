@@ -55,7 +55,7 @@ void* thread_function (void* arg)
 		/* 	Carry out the work. */
 		process_job (next_job);
 		/* Clean up. */
-		//free (next_job);
+		free (next_job);
 	}
 	return NULL;
 }

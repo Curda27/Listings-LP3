@@ -44,7 +44,7 @@ void* thread_function (void* arg)
 {
 	while (1) {
 		struct job* next_job;
-		
+
 		/* 	Wait on the job queue semaphore. If its value is positive,
 			indicating that the queue is not empty, decrement the count by
 			1. If the queue is empty, block until a new job is enqueued. */
@@ -87,7 +87,7 @@ void enqueue_job (/* Pass job-specific data here...	*/)
 		threads are blocked, waiting on the semaphore, one will become
 		unblocked so it can process the job. */
 	sem_post (&job_queue_count);
-	
+
 	/* 	Unlock the job queue mutex. */
 	pthread_mutex_unlock (&job_queue_mutex);
 }
@@ -98,19 +98,19 @@ void* add_job(void* arg)
 	do
 	{
 		sleep(1);
-		printf("Ingrese 1 para agregar un nuevo trabajo\n");
+		printf("Ingrese 1 para agregar un nuevo trabajo, otro para salir\n");
 		scanf("%d", &ent);
 		if(ent != 1)
 			break;
 		enqueue_job();
 	} while (ent==1);
-		
+
 	return NULL;
 }
 
- int main(int argc, char const *argv[])
+int main(int argc, char const *argv[])
 {
-	
+
 
 	initialize_job_queue();
 	for (int i = 0; i < 6; ++i)
@@ -118,7 +118,7 @@ void* add_job(void* arg)
 
 	pthread_t ent_thread;
 	pthread_create(&ent_thread, NULL, &add_job, NULL);
-	
+
 	int tam = 3;
 	pthread_t threads[tam];
 
@@ -130,11 +130,7 @@ void* add_job(void* arg)
 	}
 
 	pthread_join(ent_thread, NULL);
-
-	for (int i = 0; i < tam; ++i)
-	{
-		pthread_join(threads[i], NULL);
-	}
+	sleep(1);
 
 	return 0;
 }

@@ -22,7 +22,7 @@ void set_thread_flag (int flag_value)
 }
 void do_work()
 {
-	
+
 	/* se imprimen numeros aleatorios del 0 al 1000 */
 
 	int ran = rand() %1001;
@@ -43,7 +43,7 @@ void* thread_function (void* thread_arg)
 	while (1) {
 
 		int flag_is_set;
-	
+
 		/* 	Protect the flag with a mutex lock. */
 		pthread_mutex_lock (&thread_flag_mutex);
 		flag_is_set = thread_flag;
@@ -58,8 +58,8 @@ void* thread_function (void* thread_arg)
 int main()
 {
 	printf("Se imprimen numeros aleatorios hasta que se encuentre un multiplo de 10\n");
-	
-  srand(time(NULL));
+
+  	srand(time(NULL));
 
 	pthread_t thread;
 
@@ -67,7 +67,9 @@ int main()
 
 	pthread_create(&thread, NULL, &thread_function, NULL);
 
-	pthread_join(thread, NULL);
+	while(thread_flag) {
+		sleep(2);
+	}
 
 	return 0;
 }

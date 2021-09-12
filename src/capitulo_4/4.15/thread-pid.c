@@ -13,7 +13,7 @@ void* thread_function (void* arg)
 int main ()
 {
 	pthread_t thread;
-	fprintf (stderr, "main thread pid is %d\n", (int) getpid ());
+	fprintf (stderr, "Ctrl+c para terminar, los ids son iguales desde linux 2.4\nmain thread pid is %d\n", (int) getpid ());
 	pthread_create (&thread, NULL, &thread_function, NULL);
 	/* 	Spin forever. */
 	while (1);

@@ -17,8 +17,8 @@ int main()
 	memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = &handler;
 	sigaction(SIGUSR1, &sa, NULL);
-	/* Do some lengthy stuff here. */
-	/* ... */
+	printf("Ejecute \"kill -s 10 $pid\" en otra terminal para aumentar el contador\n");
+	sleep(20);
 	printf("SIGUSR1 was raised %d times\n", sigusr1_count);
 	return 0;
 }

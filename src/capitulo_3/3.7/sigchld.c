@@ -1,5 +1,8 @@
+#include <stdio.h>
+#include <stdlib.h>
 #include <signal.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 
@@ -22,6 +25,17 @@ int main()
 	sigchld_action.sa_handler = &clean_up_child_process;
 	sigaction(SIGCHLD, &sigchld_action, NULL);
 	/* Now do things, including forking a child process. */
-	/* ... */
+	pid_t child_pid = fork();
+	if (child_pid > 0)
+	{
+		/* This is the parent process. */
+		sleep(2);
+	}
+	else
+	{
+		/* This is the child process. Exit immediately. */
+		exit(5);
+	}
+	printf("Proceso hijo termino con exit = %d\n", WEXITSTATUS(child_exit_status));
 	return 0;
 }
